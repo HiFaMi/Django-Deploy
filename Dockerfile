@@ -13,7 +13,19 @@ ENV         PROJECT_DIR     /srv/project
 
 # virtualenv path
 RUN         export VENV_PATH=$(pipenv --venv); echo $VENV_PATH;
-ENV         VENV_PATH       $VENV_PATH
+
+RUN         cp -f   ${PROJECT_DIR}/.config/nginx.conf \
+                    /etc/nginx/nginx.conf && \
+
+            cp -f   ${PROJECT_DIR}/.config/nginx_app.conf \
+                    /etc/nginx/sites-available/ && \
+
+            rm -rf  /etc/nginx/sites-enabled/* && \
+
+
+            ln -sf /etc/nginx/sites-available/nginx_app.conf \
+                    /etc/nginx/sites-enabled
+
 
 
 # Run uWSGI (CMD)
