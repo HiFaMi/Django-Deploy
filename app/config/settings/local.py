@@ -16,7 +16,7 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 # WSGI
-WSGI_APPLICATION = 'config.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.local.application'
 
 # DB
 DATABASES = {
@@ -25,3 +25,5 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+print(DATABASES)

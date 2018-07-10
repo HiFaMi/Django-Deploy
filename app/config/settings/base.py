@@ -24,7 +24,7 @@ SECRET_DIR = os.path.join(ROOT_DIR, '.secrets')
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open('{}/base.json'.format(SECRET_DIR)) as json_data:
+with open(os.path.join(SECRET_DIR, 'base.json')) as json_data:
     data = json.load(json_data)
 SECRET_KEY = data["SECRET_KEY"]
 
@@ -38,7 +38,6 @@ AUTH_USER_MODEL = 'members.User'
 STATICFILES_DIRS = [
     STATIC_DIR,
 ]
-
 
 
 INSTALLED_APPS = [
