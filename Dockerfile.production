@@ -2,12 +2,12 @@ FROM        ec2-deploy:base
 
 # Copy project files
 ENV         PROJECT_DIR             /srv/project
-ENV         DJANGO_SETTINGS_MODULE  config.settings.dev
+ENV         DJANGO_SETTINGS_MODULE  config.settings.production
 
 # Nginx, Supervisor install
 RUN         apt -y install nginx supervisor
 
-ENV         BUILD_MODE              dev
+ENV         BUILD_MODE              production
 # Copy project files
 COPY        .   ${PROJECT_DIR}
 ENV         PROJECT_DIR     /srv/project
